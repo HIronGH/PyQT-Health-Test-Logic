@@ -6,13 +6,14 @@ from PyQt5.QtWidgets import (
     QGroupBox, QRadioButton,
     QPushButton, QLabel, QListWidget, QLineEdit)
 
+from config import *
 #from instr import *
 #from second_win import *
 
 class MainWin(QWidget):
     def __init__(self):
         super.__init__()
-        self.set_apper()
+        self.set_appear()
         self.initUI()
         self.connects()
         self.show()
