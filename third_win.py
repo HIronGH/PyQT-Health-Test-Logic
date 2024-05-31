@@ -1,47 +1,89 @@
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout, QVBoxLayout, QLabel, QPushButton, QLineEdit
-import config
+from PyQt5.QtWidgets import (QWidget,QVBoxLayout,QLabel)
 
+from config import *
 class ThirdWindow(QWidget):
-    def __init__(self, data):
+    def __init__(self,data):
         super().__init__()
 
-        self.data = data
-        print (self.data.test1)
-        self.index_number = float(((4*(self.data.test1 + self.data.test2 + self.data.test3)) - 200)/10)
-
-        self.set_appear()
+        self.data=data
 
         self.initUI()
 
-        self.connects()
+        self.set_appear()
 
         self.show()
 
-    def set_appear(self):
-        self.setWindowTitle(config.txt_title)
-        self.resize(config.win_width, config.win_height)
-        self.move(config.win_x, config.win_y)
+    def result(self):
+        if self.data.age < 7:
+            self.index = 0
+            return "немає даних для такого віку"
+        self.index = (4 * (int(self.data.t1) + int(self.data.t2) + int(self.data.t3)) - 200) / 10
+        if self.data.age == 7 or self.data.age == 8:
+            if self.index >=21:
+                return txt_res1
+            elif 21>self.index >=17:
+                return txt_res2
+            elif 17>self.index >=12:
+                return txt_res3
+            elif 12>self.index >=6.5:
+                return txt_res4
+            else:
+                return txt_res5
 
+        if self.data.age == 9 or self.data.age == 10:
+            if self.index >=19.5:
+                return txt_res1
+            elif 19.5>self.index >=15.5:
+                return txt_res2
+            elif 15.5>self.index >=10.5:
+                return txt_res3
+            elif 10.5>self.index >=5:
+                return txt_res4
+            else:
+                return txt_res5
+        if self.data.age == 11 or self.data.age == 12:
+            if self.index >=18:
+                return txt_res1
+            elif 18>self.index >=14:
+                return txt_res2
+            elif 14>self.index >=9:
+                return txt_res3
+            elif 9>self.index >=3.5:
+                return txt_res4
+            else:
+                return txt_res5
+        if self.data.age == 13 or self.data.age == 14:
+            if self.index >=16.5:
+                return txt_res1
+            elif 16.5>self.index >=12.5:
+                return txt_res2
+            elif 12.5>self.index >=7.5:
+                return txt_res3
+            elif 7.5>self.index >=2:
+                return txt_res4
+            else:
+                return txt_res5
+        if self.data.age >=15:
+            if self.index >=15:
+                return txt_res1
+            elif 15>self.index >=11:
+                return txt_res2
+            elif 11>self.index >=6:
+                return txt_res3
+            elif 6>self.index >=0.5:
+                return txt_res4
+            else:
+                return txt_res5
     def initUI(self):
-        print_index = f"{config.txt_index} : {self.index_number}"
-        self.txt_index = QLabel(print_index)
-        print()
-        self.txt_result = QLabel(config.txt_result)
+        self.work_text = QLabel(txt_workheart + self.result())
+        self.index_text = QLabel(txt_index + str(self.index))
+        self.layout_line = QVBoxLayout()
+        self.layout_line.addWidget(self.index_text,alignment=Qt.AlignCenter)
+        self.layout_line.addWidget(self.work_text,alignment=Qt.AlignCenter)
+        self.setLayout(self.layout_line)
 
-        self.btn_next = QPushButton(config.btn_close_app)
-
-        self.v_layout = QVBoxLayout()
-
-        self.v_layout.addWidget(self.txt_index, alignment=Qt.AlignCenter)
-        self.v_layout.addWidget(self.txt_result, alignment=Qt.AlignCenter)
-
-        self.v_layout.addWidget(self.btn_next, alignment=Qt.AlignCenter)
-
-        self.setLayout(self.v_layout)
-
-    def connects(self):
-        self.btn_next.clicked.connect(self.next_click)
-
-    def next_click(self):
-        exit()
+    def set_appear(self):
+        self.setWindowTitle(txt_finalwin)
+        self.resize(win_width , win_height)
+        self.move(win_x, win_y)

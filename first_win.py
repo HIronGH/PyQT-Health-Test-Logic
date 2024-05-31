@@ -37,7 +37,7 @@ class FirstWindow(QWidget):
 
     def next_click(self):
         self.hide()
-        self.sec_window = second_win.SecondWindow()
+        self.sec_window = second_win.TestWin()
 
 app = QApplication([])
 window = FirstWindow()
