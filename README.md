@@ -1,3 +1,3 @@
 # PyQT-Health-Test-Logic
-Health_Test in Python created 17.05.2024
-Redacted
+Health Test in Python
+We do not collect your data
