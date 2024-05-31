@@ -17,7 +17,7 @@ class ThirdWindow(QWidget):
     def result(self):
         if self.data.age < 7:
             self.index = 0
-            return "немає даних для такого віку"
+            return "Данні для данного віку відсутні."
         self.index = (4 * (int(self.data.t1) + int(self.data.t2) + int(self.data.t3)) - 200) / 10
         if self.data.age == 7 or self.data.age == 8:
             if self.index >=21:
@@ -64,19 +64,19 @@ class ThirdWindow(QWidget):
                 return txt_res4
             else:
                 return txt_res5
-        if self.data.age >=15:
-            if self.index >=15:
+        if self.data.age >= 15:
+            if self.index >= 15:
                 return txt_res1
-            elif 15>self.index >=11:
+            elif 15 > self.index >= 11:
                 return txt_res2
-            elif 11>self.index >=6:
+            elif 11 > self.index >= 6:
                 return txt_res3
-            elif 6>self.index >=0.5:
+            elif 6 > self.index >= 0.5:
                 return txt_res4
             else:
                 return txt_res5
     def initUI(self):
-        self.work_text = QLabel(txt_workheart + self.result())
+        self.work_text = QLabel(txt_heart_result + self.result())
         self.index_text = QLabel(txt_index + str(self.index))
         self.layout_line = QVBoxLayout()
         self.layout_line.addWidget(self.index_text,alignment=Qt.AlignCenter)
