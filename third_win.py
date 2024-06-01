@@ -19,6 +19,7 @@ class ThirdWindow(QWidget):
             self.index = 0
             return "Данні для данного віку відсутні."
         self.index = (4 * (int(self.data.t1) + int(self.data.t2) + int(self.data.t3)) - 200) / 10
+
         if self.data.age == 7 or self.data.age == 8:
             if self.index >=21:
                 return txt_res1
@@ -84,6 +85,6 @@ class ThirdWindow(QWidget):
         self.setLayout(self.layout_line)
 
     def set_appear(self):
-        self.setWindowTitle(txt_finalwin)
+        self.setWindowTitle(txt_thirdwin)
         self.resize(win_width , win_height)
         self.move(win_x, win_y)
